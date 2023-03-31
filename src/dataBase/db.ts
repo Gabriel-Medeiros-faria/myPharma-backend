@@ -16,3 +16,4 @@ const mongoClient = new MongoClient(`${process.env.MONGO_URI}`);
 const db = mongoClient.db("myPharma")
 export const userCollection = db.collection("users")
 export const sessionsCollection = db.collection("sessions")
+export const productCollection = db.collection("products")
