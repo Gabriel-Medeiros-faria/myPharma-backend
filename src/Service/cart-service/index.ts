@@ -1,11 +1,12 @@
+import { ObjectId } from "mongodb"
 import cartRepository from "../../Repositories/cart-repository"
 
-async function postProductToCart(id: string, name: string, price: number, image: string, amount: number){
-        await cartRepository.create(id, name, price, image, amount)
+async function postProductToCart(id: string, name: string, price: number, image: string, amount: number, userId: ObjectId){
+        await cartRepository.create(id, name, price, image, amount, userId)
 }
 
-async function getProductsToCart(){
-    const products = await cartRepository.getProduct()
+async function getProductsToCart(userId: string){
+    const products = await cartRepository.getProduct(userId)
     return products
 }
 

@@ -6,7 +6,8 @@ async function create(
   name: string,
   price: number,
   image: string,
-  amount: number
+  amount: number,
+  userId: ObjectId
 ) {
   return cartCollection.insertOne({
     productId: new ObjectId(id),
@@ -14,11 +15,12 @@ async function create(
     price,
     image,
     amount,
+    userId
   });
 }
 
-async function getProduct() {
-  return cartCollection.find({}).toArray();
+async function getProduct(userId: string) {
+  return cartCollection.find({userId}).toArray();
 }
 
 async function deleteProduct(id: string){
