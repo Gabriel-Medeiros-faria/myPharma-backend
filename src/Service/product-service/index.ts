@@ -9,9 +9,16 @@ async function findProducts(){
     return products
 }
 
+async function findOneProduct(id: string){
+    const product = await productRepository.findOne(id)
+    if(!product) throw {name: 'Produto não encontrado!'}
+    return product
+}
+
 const productService = {
     createProduct,
-    findProducts
+    findProducts,
+    findOneProduct
 }
 
 export default productService

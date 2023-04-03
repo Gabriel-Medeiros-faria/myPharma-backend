@@ -13,7 +13,7 @@ async function signIn(email: string, password: string){
     const senhaHash = await bcrypt.compare(password, user?.password)
     if(!senhaHash) throw {name: "Senha incorreta!"}
 
-    const session = await signInRepository.findOne( user._id )
+    const session = await signInRepository.findOne( user.token )
 
         if (!session) {
             const token = jwt.sign({user}, `${process.env.JWT_SECRET}`)

@@ -1,9 +1,16 @@
 import { Router } from "express";
-import { createProduct, findProducts } from "../Controllers/product.Controller";
+import {
+  createProduct,
+  findProducts,
+  findOneProduct,
+} from "../Controllers/product.Controller";
+import { AuthMiddleware } from "../Middleware/Auth.middleware";
 
-const productRouter = Router()
+const productRouter = Router();
 
-productRouter.post('/', createProduct)
-productRouter.get('/', findProducts)
-
-export default productRouter
+productRouter
+  .all('/*', AuthMiddleware)
+  .post("/" , createProduct)
+  .get("/", findProducts)
+  .get("/:id", findOneProduct);
+export default productRouter;

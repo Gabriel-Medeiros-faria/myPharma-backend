@@ -5,8 +5,8 @@ async function createSession(user: any, token: string){
     return sessionsCollection.insertOne({userId: user._id, email: user.email, name: user.name, token}) 
 }
 
-async function findOne(userId: ObjectId){
-    return sessionsCollection.findOne({userId})
+async function findOne(token: string){
+    return sessionsCollection.findOne({token})
 }
 
 async function deleteSession(token: string) {
