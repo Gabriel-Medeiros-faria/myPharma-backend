@@ -16,7 +16,7 @@ async function signIn(email, password) {
     const senhaHash = await bcrypt_1.default.compare(password, user === null || user === void 0 ? void 0 : user.password);
     if (!senhaHash)
         throw { name: "Senha incorreta!" };
-    const session = await signIn_repository_1.default.findOne(user._id);
+    const session = await signIn_repository_1.default.findOne(user.token);
     if (!session) {
         const token = jsonwebtoken_1.default.sign({ user }, `${process.env.JWT_SECRET}`);
         await signIn_repository_1.default.createSession(user, token);

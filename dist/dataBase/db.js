@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.productCollection = exports.sessionsCollection = exports.userCollection = void 0;
+exports.cartCollection = exports.productCollection = exports.sessionsCollection = exports.userCollection = void 0;
 const mongodb_1 = require("mongodb");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
@@ -21,4 +21,5 @@ const db = mongoClient.db("myPharma");
 exports.userCollection = db.collection("users");
 exports.sessionsCollection = db.collection("sessions");
 exports.productCollection = db.collection("products");
+exports.cartCollection = db.collection("cart");
 //# sourceMappingURL=db.js.map

@@ -11,9 +11,16 @@ async function findProducts() {
     const products = await product_repository_1.default.find();
     return products;
 }
+async function findOneProduct(id) {
+    const product = await product_repository_1.default.findOne(id);
+    if (!product)
+        throw { name: 'Produto não encontrado!' };
+    return product;
+}
 const productService = {
     createProduct,
-    findProducts
+    findProducts,
+    findOneProduct
 };
 exports.default = productService;
 //# sourceMappingURL=index.js.map

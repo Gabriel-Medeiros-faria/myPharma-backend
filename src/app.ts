@@ -16,5 +16,5 @@ app
     .use("/products" , productRouter)
     .use("/cart", cartRouter)
 //const port = process.env.PORT || 5000
-const port = 5000
+const port = 5001
 app.listen(port, ()=> console.log(`Servidor está rodando na porta ${port}`))
