@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import signInRepository from '../../Repositories/signIn-repository'
 import signUpRepository from '../../Repositories/signUp-repository'
 import dotenv from 'dotenv'
+import { sessionsCollection } from '../../dataBase/db';
 dotenv.config()
 
 async function signIn(email: string, password: string){
@@ -39,8 +40,15 @@ async function signIn(email: string, password: string){
     
 }
 
+async function deleteSession(token: string){
+    const session = await signInRepository.findOne(token)
+    if(!session) throw {name: "Sessão não existe"}
+    await signInRepository.deleteSession(token)
+}
+
 const signInService = {
-    signIn
+    signIn,
+    deleteSession
 }
 
 export default signInService
