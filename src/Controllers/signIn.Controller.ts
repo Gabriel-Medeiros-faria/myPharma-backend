@@ -15,8 +15,8 @@ export async function signIn(req: Request, res:Response){
 
 export async function deleteSession(req: Request, res:Response) {
 
-    const {token} = req.body
-
+    const token = res.locals.token 
+    console.log(token)
     try{
         await signInService.deleteSession(token)
         res.sendStatus(200)
