@@ -7,7 +7,6 @@ export async function signUp(req: Request, res: Response) {
     await signUpService.signUp(password, email, name);
     res.sendStatus(201);
   } catch (error) {
-    console.log(error);
     res.status(403).send(error);
   }
 }

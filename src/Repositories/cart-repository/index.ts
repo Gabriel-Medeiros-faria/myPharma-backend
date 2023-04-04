@@ -27,10 +27,15 @@ async function deleteProduct(id: string){
     return cartCollection.deleteOne({productId: new ObjectId(id)})
 }
 
+async function updateProduct(productId: string, amount: number){
+  return cartCollection.updateOne({productId}, {$set: {amount}})
+}
+
 const cartRepository = {
   create,
   getProduct,
-  deleteProduct
+  deleteProduct,
+  updateProduct
 };
 
 export default cartRepository;

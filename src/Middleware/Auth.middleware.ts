@@ -12,7 +12,6 @@ export async function AuthMiddleware(req: Request, res: Response, next: NextFunc
 
     try{
         const session = await sessionsCollection.findOne({token})
-        console.log(session)
         if(!session) return res.status(401).send('não tem sessão')
         res.locals.user = session
         return next()
