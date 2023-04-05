@@ -13,8 +13,10 @@ async function postProductToCart(
   const product = productsToCart.find((prod) => prod.name === name);
   if (product) {
     await cartRepository.updateProduct(product.productId, amount + product.amount);
+    return false
   } else {
     await cartRepository.create(id, name, price, image, amount, userId);
+    return true
   }
   
 }
@@ -26,6 +28,7 @@ async function getProductsToCart(userId: string) {
 
 async function deleteProductToCart(id: string) {
   await cartRepository.deleteProduct(id);
+  return true
 }
 
 const cartService = {

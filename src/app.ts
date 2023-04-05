@@ -5,8 +5,10 @@ import signInRouter from './Routes/signIn.Route'
 import signUpRouter from './Routes/signUp.Route'
 import productRouter from './Routes/product.Route'
 import cartRouter from './Routes/cart.Route'
+import { loadEnv } from './config/envs'
 
 dotenv.config()
+loadEnv()
 const app = express()
 app
     .use(express.json())
