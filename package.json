@@ -8,7 +8,7 @@
     "build": "tsc",
     "test": "NODE_ENV=test jest --passWithNoTests --runInBand",
     "dev": "nodemon src/app.ts",
-    "publish": "node dist/app.js"
+    "publish": "node dist/src/app.js"
   },
   "keywords": [],
   "author": "",
