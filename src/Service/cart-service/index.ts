@@ -13,10 +13,8 @@ async function postProductToCart(
   const product = productsToCart.find((prod) => prod.name === name);
   if (product) {
     await cartRepository.updateProduct(product.productId, amount + product.amount);
-    return false
   } else {
     await cartRepository.create(id, name, price, image, amount, userId);
-    return true
   }
   
 }
