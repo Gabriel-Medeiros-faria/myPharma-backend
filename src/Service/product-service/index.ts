@@ -1,5 +1,7 @@
 import productRepository from "../../Repositories/product.repository"
 
+
+
 async function findProducts(){
     const products = await productRepository.find()
     return products
